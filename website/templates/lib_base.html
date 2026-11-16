@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Library{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .lib { max-width: 900px; margin: 30px auto; padding: 0 16px; }
+    .lib table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; }
+    .lib th, .lib td { border: 1px solid #ccc; padding: 8px 10px; text-align: left; vertical-align: middle; background: #fff; }
+    .lib th { background: #f0f0f0; }
+    .lib .errors { color: #b00020; background: #fdecea; padding: 10px 24px; border-radius: 6px; }
+    .lib .empty { color: #777; }
+    .lib .search-form { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 16px; }
+    .lib .search-form label { margin: 0; font-weight: normal; }
+    .lib .search-form input, .lib .search-form select { display: block; margin-top: 4px; padding: 8px;
+        border: 1px solid #c8cad6; border-radius: 8px; font-size: 15px; width: auto; }
+    .lib nav.menu { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 18px; padding-bottom: 10px;
+        border-bottom: 1px solid #ddd; }
+    .lib nav.menu a.current { font-weight: bold; text-decoration: none; color: #222; }
+    .lib .table-scroll { overflow-x: auto; }
+  </style>
+</head>
+<body>
+<div class="lib">
+  {% include "_menu.html" %}
+  <h1>{% block heading %}{% endblock %}</h1>
+  {% if errors %}
+  <ul class="errors">
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

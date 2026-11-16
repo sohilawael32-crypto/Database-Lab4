@@ -1,0 +1,8 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Catalogue{% endblock %}
+{% block heading %}Catalogue{% endblock %}
+{% block content %}
+<!-- F2.2: JOIN of BOOK with AUTHOR, PUBLISHER and CATEGORY -->
+{{ table(books, [('book_id','book_id'),('title','Title'),('price','Price'),('publish_year','Year'),('author','Author'),('publisher','Publisher'),('category','Category')], 'No books yet.') }}
+{% endblock %}

@@ -1,0 +1,9 @@
+<nav class="menu">
+  <a href="/library" {% if request.path == '/library' %}class="current"{% endif %}>Manage books &amp; authors</a>
+  <a href="/books/search" {% if request.path == '/books/search' %}class="current"{% endif %}>Search books</a>
+  <a href="/catalogue" {% if request.path == '/catalogue' %}class="current"{% endif %}>Catalogue</a>
+  <a href="/reports" {% if request.path == '/reports' %}class="current"{% endif %}>Reports</a>
+  <a href="/loans" {% if request.path == '/loans' %}class="current"{% endif %}>Loans</a>
+  <a href="/most-borrowed" {% if request.path == '/most-borrowed' %}class="current"{% endif %}>Most borrowed</a>
+  <a href="/authors-books" {% if request.path == '/authors-books' %}class="current"{% endif %}>Authors and books</a>
+</nav>

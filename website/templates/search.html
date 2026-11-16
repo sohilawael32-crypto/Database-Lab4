@@ -1,0 +1,32 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Search books{% endblock %}
+{% block heading %}Search books{% endblock %}
+{% block content %}
+<!-- F2.1: keyword (LIKE), price range (BETWEEN) and category (WHERE) -->
+<form class="search-form" method="get" action="/books/search">
+  <label>Title keyword
+    <input type="text" name="keyword" value="{{ form.keyword }}" placeholder="e.g. nile" maxlength="150">
+  </label>
+  <label>Minimum price
+    <input type="text" name="min_price" value="{{ form.min_price }}" placeholder="0" size="8">
+  </label>
+  <label>Maximum price
+    <input type="text" name="max_price" value="{{ form.max_price }}" placeholder="no limit" size="8">
+  </label>
+  <label>Category
+    <select name="category_id">
+      <option value="">All categories</option>
+      {% for c in categories %}
+      <option value="{{ c.category_id }}" {% if form.category_id == c.category_id|string %}selected{% endif %}>{{ c.name }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <button type="submit">Search</button>
+</form>
+
+{% if books is not none %}
+<p>{{ books|length }} book(s) found, cheapest first.</p>
+{{ table(books, [('book_id','book_id'),('title','Title'),('price','Price'),('publish_year','Year'),('author','Author'),('category','Category')], 'No book matches your search.') }}
+{% endif %}
+{% endblock %}

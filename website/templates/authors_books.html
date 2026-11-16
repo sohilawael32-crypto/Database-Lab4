@@ -1,0 +1,12 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Authors and books{% endblock %}
+{% block heading %}Authors and books{% endblock %}
+{% block content %}
+<!-- F2.6: LEFT JOIN and JOIN -->
+<h2>(a) Every author with the number of books (0 included)</h2>
+{{ table(author_counts, [('author_id','author_id'),('author','Author'),('books','Number of books')]) }}
+
+<h2>(b) Books whose author and publisher come from the same country</h2>
+{{ table(same_country, [('book_id','book_id'),('title','Title'),('author','Author'),('publisher','Publisher'),('country','Country')], 'No such book.') }}
+{% endblock %}

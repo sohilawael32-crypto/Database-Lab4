@@ -1,0 +1,15 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Loans{% endblock %}
+{% block heading %}Loans{% endblock %}
+{% block content %}
+<!-- F2.4: JOIN and LEFT JOIN ... IS NULL -->
+<h2>(a) Loans not returned yet</h2>
+{{ table(not_returned, [('loan_id','loan_id'),('title','Book'),('member','Member'),('loan_date','Loan date')], 'All the books are returned.') }}
+
+<h2>(b) Members who never borrowed a book</h2>
+{{ table(no_loans, [('member_id','member_id'),('name','Name'),('email','Email')], 'Every member borrowed at least one book.') }}
+
+<h2>(c) Books that were never borrowed</h2>
+{{ table(never_borrowed, [('book_id','book_id'),('title','Title')], 'Every book was borrowed at least once.') }}
+{% endblock %}

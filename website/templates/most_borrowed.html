@@ -1,0 +1,12 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Most borrowed{% endblock %}
+{% block heading %}Most borrowed{% endblock %}
+{% block content %}
+<!-- F2.5: GROUP BY, ORDER BY, LIMIT -->
+<h2>The 3 books with the most loans</h2>
+{{ table(top_books, [('title','Book'),('loans','Number of loans')], 'No loans yet.') }}
+
+<h2>The member with the most loans</h2>
+{{ table(top_member, [('member','Member'),('loans','Number of loans')], 'No loans yet.') }}
+{% endblock %}

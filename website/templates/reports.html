@@ -1,0 +1,15 @@
+{% extends "lib_base.html" %}
+{% from "_macros.html" import table %}
+{% block title %}Reports{% endblock %}
+{% block heading %}Reports{% endblock %}
+{% block content %}
+<!-- F2.3: GROUP BY, HAVING, aggregate functions -->
+<h2>(a) Books and average price of each category</h2>
+{{ table(per_category, [('category','Category'),('books','Number of books'),('average_price','Average price')]) }}
+
+<h2>(b) Authors who wrote at least 2 books</h2>
+{{ table(busy_authors, [('author','Author'),('books','Number of books')], 'No author wrote 2 books or more.') }}
+
+<h2>(c) Prices of the whole library</h2>
+{{ table([totals], [('total_price','Total price'),('smallest_price','Smallest price'),('largest_price','Largest price')]) }}
+{% endblock %}

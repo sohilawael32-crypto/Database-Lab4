@@ -1,0 +1,13 @@
+{# table(rows, columns, empty_text): columns = list of (key, header) pairs; rows = list of dicts #}
+{% macro table(rows, columns, empty_text="No rows.") %}
+<div class="table-scroll">
+<table>
+  <tr>{% for key, header in columns %}<th>{{ header }}</th>{% endfor %}</tr>
+  {% for r in rows %}
+  <tr>{% for key, header in columns %}<td>{{ r[key] if r[key] is not none else '-' }}</td>{% endfor %}</tr>
+  {% else %}
+  <tr><td colspan="{{ columns|length }}" class="empty">{{ empty_text }}</td></tr>
+  {% endfor %}
+</table>
+</div>
+{% endmacro %}
